@@ -1,6 +1,7 @@
 package com.home.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,8 @@ import com.home.service.interf.StudentService;
 
 @Controller
 public class StudentController {
+	@Value("${test}")
+	private String Test;
 	@Autowired
 	private StudentService studentService;
 
@@ -23,7 +26,7 @@ public class StudentController {
 		student.setName("王五");
 		student.setSex("男");*/
 		student.setName(name);
-		
+		System.out.println(Test+"ts");
 		studentService.addStudent(student);
 		model.addAttribute(student);
 		return "test";
